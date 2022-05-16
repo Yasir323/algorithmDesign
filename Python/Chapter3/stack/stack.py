@@ -24,13 +24,14 @@ class EmptyStackError(Exception):
 class Stack:
     
     def __init__(self, elements=None, maxlen=None):
+        self._maxlen = maxlen
         if elements is None:
             elements = []
-        self._maxlen = maxlen
         if self._maxlen:
             if len(elements) > self._maxlen:
                 raise MaxSizeError
         self.elements = elements
+        self._count = len(elements)
 
     def push(self, data):
         if not self._maxlen:
@@ -40,18 +41,21 @@ class Stack:
                 self.elements.append(data)
             else:
                 raise MaxSizeError
+        self._count += 1
 
     def pop(self):
         if self.elements:
-            return self.elements.pop()
+            popped_element = self.elements.pop()
+            self._count -= 1
+            return popped_element 
         else:
             raise EmptyStackError
     
     def __len__(self):
-        return len(self.elements)
+        return self._count
 
     def is_empty(self):
-        return True if len(self.elements) == 0 else False
+        return True if self._count == 0 else False
     
     def peek(self):
         return self.elements[-1]
