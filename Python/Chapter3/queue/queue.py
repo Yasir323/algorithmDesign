@@ -1,4 +1,14 @@
-# 4 operations: push, pop, peek or top, isEmpty
+"""
+4 operations: enqueue, dequeue, peek, isEmpty, isFull
+
+Array implemntation:
+All 5 operations are O(1). Nut after a few enqueue and dedqueue 
+operations, there will be non-usable empty space.
+Linked list based implementtation can solve this, but it results in
+enqueue and isFull operations becoming O(n).
+"""
+
+
 class MaxSizeError(Exception):
     """Raised when queue is full."""
 
