@@ -63,8 +63,7 @@ void pq_init(priority_queue *pq)
 void make_heap(priority_queue *pq, int s[], int n)
 {
     pq_init(pq);
-    for (int i = 0; i < n; i++)
-        insert(pq, s[i]);
+    for (int i = 0; i < n; i++) insert(pq, s[i]);
 }
 
 
@@ -88,6 +87,15 @@ void bubble_down(priority_queue *pq, int p)
     }
 }
 
+
+void make_heap_faster(priority_queue *pq, int s[], int n)
+{
+    pq->n = n;
+    for (int i = 0; i < n; i++)
+        pq->q[i] = s[i];
+    for (int i = pq->n - 1; i >= 0; i--)
+        bubble_down(pq, i);
+}
 
 int extract_min(priority_queue *pq)
 {
@@ -129,7 +137,7 @@ int main()
 {
     priority_queue *pq = malloc(sizeof(priority_queue) * PQ_SIZE);
     int s[PQ_SIZE] = {11, 32, 54, 67, 2, 34, 56, 55, 90, 6};
-    make_heap(pq, s, PQ_SIZE);
+    make_heap_faster(pq, s, PQ_SIZE);
     print_pq(pq);
     printf("Minimum: %d\n", extract_min(pq));
     printf("After extracting minimum:\n");
