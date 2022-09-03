@@ -7,7 +7,7 @@ def insertionSort(arr):
             j -= 1
         arr[j + 1] = curr
     return arr
-                
+
 
 # Driver code to test above
 arr = [12, 11, 13, 5, 6]
