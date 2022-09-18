@@ -10,13 +10,13 @@ def quick_sort(array: List[int], low: int, high: int):
 
 def partition(array: List[int], low: int, high: int):  # O(n)
     p = high
-    first_high = low
+    first_high = low - 1
     for i in range(low, high):
         if array[i] < array[p]:
-            array[i], array[first_high] = array[first_high], array[i]
             first_high += 1
-    array[p], array[first_high] = array[first_high], array[p]
-    return first_high
+            array[i], array[first_high] = array[first_high], array[i]
+    array[p], array[first_high + 1] = array[first_high + 1], array[p]
+    return first_high + 1
 
 
 if __name__ == '__main__':
