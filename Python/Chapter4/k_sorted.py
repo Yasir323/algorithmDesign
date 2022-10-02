@@ -1,3 +1,16 @@
+"""
+Program to sort a k-sorted array
+
+The algorithm uses quick sort but changes the partition function 
+in 2 ways.
+
+1. Selects pivot element as the middle element instead of the 
+first or last element.
+2. Scans the array from max(low, mid – k) to min(mid + k, high) 
+instead of low to high.
+"""
+
+
 def quick_sort(array, low, high, k):  # O(log(n))
     if low < high:
         partition_index = partition(array, low, high, k)
