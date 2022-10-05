@@ -30,8 +30,8 @@ def find_closest(arr, n, target):
     return arr[mid]
        
     
-# Driver code
-arr = [1, 2, 4, 5, 6, 6, 8, 9]
-n = len(arr)
-target = 6
-print(find_closest(arr, n, target))
+if __name__ == "__main__":
+    arr = [1, 2, 4, 5, 6, 6, 8, 9]
+    n = len(arr)
+    target = 7
+    print(find_closest(arr, n, target))
